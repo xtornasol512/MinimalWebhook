@@ -15,8 +15,11 @@ class WebhookResource(object):
 
     def on_post(self, req, resp):
         """  Webhook Type POST"""
-        doc = json.load(req.bounded_stream)
-        resp.body = json.dumps(doc)
+        try:
+            doc = json.load(req.bounded_stream)
+            resp.body = json.dumps(doc)
+        except json.decoder.JSONDecodeError:
+            resp.body = json.dumps({"500Error": "Whoops! We can't read your data"})
 
 
 
