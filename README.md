@@ -6,7 +6,7 @@ Minimal app lauch to see webhook actions!
 
 
 
-Use
+### Use
 
 - Install requirements
 - Run Gunicorn
@@ -14,3 +14,11 @@ Use
 ```
 gunicorn app:app -b :8080
 ```
+
+
+### Useful command lines to debug!
+
+```
+import pdb; pdb.set_trace()
+```
+

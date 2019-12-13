@@ -1,5 +1,6 @@
 # Let's get this party started!
 import falcon
+import json
 
 
 class WebhookResource(object):
@@ -10,6 +11,14 @@ class WebhookResource(object):
                      'above me and the moral law within me.\n'
                      '\n'
                      '    ~ Immanuel Kant\n\n')
+
+
+    def on_post(self, req, resp):
+        """  Webhook Type POST"""
+        doc = json.load(req.bounded_stream)
+        resp.body = json.dumps(doc)
+
+
 
 # falcon.API instances are callable WSGI apps
 app = falcon.API()
