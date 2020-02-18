@@ -17,7 +17,9 @@ class WebhookResource(object):
         """  Webhook Type POST"""
         try:
             doc = json.load(req.bounded_stream)
-            resp.body = json.dumps(doc)
+            result = json.dumps(doc)
+            print(result)
+            resp.body = result
         except json.decoder.JSONDecodeError:
             resp.body = json.dumps({"500Error": "Whoops! We can't read your data"})
 
